@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+:root {
+    --green1: #188d3f;
+    --green2: #68e272;
+}
+
+
 * {
     box-sizing: border-box;
 }
@@ -62,8 +68,8 @@ body {
 
 .message {
     margin: 10px;
-    font-size: 30px;
-    width: 25%;
+    font-size: 20px;
+    width: 45%;
     padding: 30px;
 }
 
@@ -126,3 +132,18 @@ body {
       filter: blur(2px);
     }
 } */
+
+
+.fa-leaf {
+    color: var(--green2);
+    z-index: -1;
+    position: absolute;
+
+}
+
+#one.fa-leaf {
+    font-size: 40px;
+    top: 70vh;
+    left: 5vw;
+    opacity: 0.3;
+}
