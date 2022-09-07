@@ -76,7 +76,7 @@ body {
 
 .images {
     position: relative;
-    height: 200px;
+    height: 100px;
 }
 
 #green {
@@ -93,6 +93,28 @@ body {
     left: -210px;
 }
 
+
+.learnmore {
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+#arrowOne {
+    font-size: 2rem;
+    position: absolute;
+    top: -20px;
+}
+
+#arrowTwo {
+    font-size: 7rem;
+    position: absolute;
+    top: -10px;
+    z-index: -1;
+    opacity: 0.2;
+}
 
 
 .grid-container {

@@ -3,6 +3,10 @@ const prog = document.getElementById('progressAmount')
 const body = document.getElementsByTagName("body")[0]
 const green = document.getElementById('green')
 const brown = document.getElementById('brown')
+const arrowOne = document.getElementById('arrowOne')
+
+// -------------------- ISLAND FLOAT AND ANIMATION (AND ARROW)
+
 
 const greenCenter = {
     x: parseFloat(getComputedStyle(green).left),
@@ -23,6 +27,7 @@ function startAnimation() {
 
     green.style.top = `${new_y}px`
     brown.style.top = `${new_y}px`
+    arrowOne.style.fontSize = `${2 + Math.sin(animated_value * sway)}rem`
     animated_value++;
 
     requestAnimationFrame(startAnimation)
@@ -31,7 +36,7 @@ function startAnimation() {
 startAnimation()
 
 
-setInterval(removeImg, 30)
+setInterval(removeImg, 50)
 let counter = 100
 
 function removeImg(){
@@ -46,12 +51,18 @@ function removeImg(){
 
 
 
+// --------------------- SET INFOGRAPHIC TEXT
+
 const msgs = [
     {'start': '100', 'end': '60', 'msg': 'By 2045, we will have 40% less food, and a population of 9.4 Billion.'},
     {'start': 10, 'end': 20, 'msg': 'Loading...'},
 
 
 ]
+msg.innerText = msgs[0].msg
+
+
+// ------------------ CREATE AND DISPLAY RANDOM LEAFS
 
 const leafs = document.querySelectorAll('.fa-leaf')
 console.log(leafs)
@@ -73,9 +84,13 @@ leafs.forEach((leaf) => {
 }
 )
 
-msg.innerText = msgs[0].msg
 
 console.log("Start: " + msgs[0].start)
+
+
+
+
+// ------------------- CHANGE BACKGROUND
 
 const start = parseInt(msgs[0].start)
 const end = parseInt(msgs[0].end)
@@ -86,6 +101,7 @@ const green2 = '#68e272'
 
 let load = 0;
 
+
 let interval = setInterval(blurring, 30)
 
 async function changeBg() {
@@ -94,14 +110,14 @@ async function changeBg() {
     body.style.background = `${red2}`
 }
 
-
-
 changeBg()
 
 prog.style.backgroundColor = red1
 // body.style.background = green1
 // body.style.background =  red2
 // body.style.background = `linear-gradient(90deg, ${red1}, ${red2})`
+
+// ----------------- ANIMATE LOADING BAR
 
 const calcPercent = (load, start, end) => {
     return Math.round(start + (end - start) * (load / 100));
