@@ -1,6 +1,49 @@
 const msg = document.getElementById('mainMessage')
 const prog = document.getElementById('progressAmount')
 const body = document.getElementsByTagName("body")[0]
+const green = document.getElementById('green')
+const brown = document.getElementById('brown')
+
+const greenCenter = {
+    x: parseFloat(getComputedStyle(green).left),
+    y: parseFloat(getComputedStyle(green).top)
+}
+
+let new_y = 0.0;
+let animated_value = 0.0;
+let sway = 0.020;
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function startAnimation() {
+
+    new_y = greenCenter.y + (5.0 * Math.sin(animated_value * sway));
+
+    green.style.top = `${new_y}px`
+    brown.style.top = `${new_y}px`
+    animated_value++;
+
+    requestAnimationFrame(startAnimation)
+}
+
+startAnimation()
+
+
+setInterval(removeImg, 30)
+let counter = 100
+
+function removeImg(){
+    if (counter < 0) {
+        clearInterval(interval)
+    }
+
+    green.style.opacity = counter / 100
+
+    counter--
+}
+
 
 
 const msgs = [
@@ -51,9 +94,7 @@ async function changeBg() {
     body.style.background = `${red2}`
 }
 
-function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
+
 
 changeBg()
 
